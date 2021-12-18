@@ -1,32 +1,27 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// First create a bank of letters, numbers, and special characters for the password
-letters = ['abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ']
-numbers =['1234567890']
-characters =['@!#$%&']
-
-//Create variables for prompts
-var wantPassword = prompt('Would you like to generate a password? (yes/y or no/n)')
-var passwordlength = prompt('How long would you like the password to be? (enter a number less than 50)')
-
-
+// Create a function that will generate a random password depenedt on the number of digits entered in the prompt
 function generatePassword(digits){
-  var digits
-  if( wantPassword == 'yes' && want){
-
+  if (Number.isInteger(parseInt(digits))==true){
+    var passwordResult = Math.random().toString(36).substring(0, digits);
+  } else {
+    alert("Password will not be generated must enter a valid number");
   }
-
+  return passwordResult;
 }
+
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  const digits = prompt("How long would you like your password to be?"); //Added digits prompt
+  var password = generatePassword(digits);
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
